@@ -1,0 +1,24 @@
+@startuml
+
+class Employee{
+    - String firstName
+    - String lastName
+    - int age
+    - int ID
+--
+    + Employee(int,String,String,int)
+    + calculateSalary(): double
+    + billHistory(String): ArrayList
+    + toString(): String
+}
+
+class PartTimeEmployee extends Employee{
+    + PartTimeEmployee(int, String, String,int)
+    + calculateSalary(int, int): double
+
+}
+
+
+
+
+@enduml
