@@ -1,18 +1,18 @@
 package Employees;
 
 public abstract class Payable {
-    private static int checknumber = 0;
+    private static int checkNumber = 0;
 
     public void incerement() {
-        checknumber += 1;
+        checkNumber += 1;
     }
 
-    public Payable(int checknumber) {
-        this.checknumber = checknumber;
+    public Payable(int checkNumber) {
+        Payable.checkNumber = checkNumber;
     }
 
     public int getCheckNumber() {
-        return checknumber;
+        return checkNumber;
     }
 
     public abstract void issueCheck();
