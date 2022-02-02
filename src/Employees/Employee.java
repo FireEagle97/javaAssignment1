@@ -1,10 +1,16 @@
 package Employees;
 
-public abstract class Employee extends Payable {
+public abstract class Employee implements Payable {
     private String firstName;
     private String lastName;
+    private String typeOfEmployee;
     private int age;
     private int ID;
+
+    public String getTypeOfEmployee() {
+        return typeOfEmployee;
+    }
+
 
     /**
      * The constructor of the Employee of the abstract class to create an Employee
@@ -16,8 +22,7 @@ public abstract class Employee extends Payable {
      * @param age
      * @param checkNumber
      */
-    public Employee(int id, String fname, String lname, int age, int checkNumber) {
-        super(checkNumber);
+    public Employee(int id, String fname, String lname, int age) {
         this.ID = id;
         this.age = age;
         this.firstName = fname;

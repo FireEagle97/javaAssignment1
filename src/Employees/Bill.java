@@ -1,6 +1,6 @@
 package Employees;
 
-public class Bill extends Payable {
+public class Bill implements Payable {
 
     private String companyName;
     private double amount;
@@ -13,7 +13,6 @@ public class Bill extends Payable {
      * @param checknumber
      */
     public Bill(String companyName, double amount, int checknumber) {
-        super(checknumber);
         this.companyName = companyName;
         this.amount = amount;
     }
@@ -34,6 +33,19 @@ public class Bill extends Payable {
         return "The name of the company name :" + this.companyName + '\n' +
                 "The amount of the check: " + this.amount + '\n' +
                 " ";
+    }
+
+    @Override
+    public int getCheckNumber() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void incerementCheckNumber(int previousCheck) {
+        // TODO Auto-generated method stub
+        previousCheck += 1;
+        
     }
 
 }

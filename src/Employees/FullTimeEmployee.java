@@ -10,6 +10,8 @@ package Employees;
 public class FullTimeEmployee extends Employee {
 
     final double salary = 84000.0;
+    private String typeOfEmployee;
+
 
     /**
      * 
@@ -19,8 +21,9 @@ public class FullTimeEmployee extends Employee {
      * @param age
      * @param checkNumber
      */
-    public FullTimeEmployee(int id, String fname, String lname, int age, int checkNumber) {
-        super(id, fname, lname, age, checkNumber);
+    public FullTimeEmployee(int id, String fname, String lname, int age) {
+        super(id, fname, lname, age);
+        this.typeOfEmployee = "Full Time";
     }
 
     /**
@@ -36,6 +39,28 @@ public class FullTimeEmployee extends Employee {
      */
     public void issueCheck() {
         System.out.println("Full time employee issue check");
+    }
+
+    public String getTypeOfEmployee() {
+        return typeOfEmployee;
+    }
+
+    @Override
+    public int getCheckNumber() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void incerementCheckNumber(int previousCheck) {
+        previousCheck += 1;
+    }
+
+    @Override
+    public String toString() {
+        String empInfo = super.toString() + "\n" + "Type of employee is :"+this.typeOfEmployee;
+    
+        return empInfo;
     }
 
 }
