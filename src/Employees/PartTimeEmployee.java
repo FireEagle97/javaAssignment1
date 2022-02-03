@@ -1,5 +1,7 @@
 package Employees;
 
+import java.io.Console;
+
 /**
  * @authors Cuneyt Yildirim && Dany Makhoul && Kyle Verso
  * @description
@@ -27,15 +29,7 @@ public class PartTimeEmployee extends Employee {
         this.typeOfEmployee = "Part Time";
     }
 
-    /**
-     * 
-     * @param hours
-     * @param echelon
-     * @return
-     */
-    public double calculateSalary(int hours, int echelon) { // hours should be double 
-        return hours * rateSalary[echelon - 1];
-    }
+ 
 
     
     public void issueCheck() {
@@ -59,6 +53,16 @@ public class PartTimeEmployee extends Employee {
         String empInfo = super.toString() + "\n" + "Type of employee is :"+this.typeOfEmployee;
     
         return empInfo;
+    }
+
+ 
+
+    @Override
+    public double calculateSalary() { // hours should be double 
+        Console console = System.console();
+        int echelon = Integer.parseInt(console.readLine("Enter his/her echelon\n"));
+        double hours = Double.parseDouble(console.readLine("Enter his/her hourly works\n"));
+        return hours * rateSalary[echelon - 1];
     }
 
 

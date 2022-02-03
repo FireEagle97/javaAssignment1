@@ -27,9 +27,10 @@ public class FullTimeEmployee extends Employee {
     }
 
     /**
-     * 
-     * @return
+     * Calculates full time employee's fixed salary
+     * @return monthly salary of the current employee
      */
+    @Override
     public double calculateSalary() {
         return (salary) / 12;
     }
@@ -41,6 +42,9 @@ public class FullTimeEmployee extends Employee {
         System.out.println("Full time employee issue check");
     }
 
+    /**
+     * @return type of employee
+     */
     public String getTypeOfEmployee() {
         return typeOfEmployee;
     }

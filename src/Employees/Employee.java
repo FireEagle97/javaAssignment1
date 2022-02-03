@@ -24,7 +24,10 @@ public abstract class Employee extends Payable {
         this.lastName = lname;
     }
 
-    
+
+    public abstract double calculateSalary();
+
+
     public String toString() {
         String employeeInfo = "Your employee info:\n" +
                 "Employee's id is: " + this.ID + "\n" +
@@ -53,8 +56,6 @@ public abstract class Employee extends Payable {
 
     public int getID() {
         return ID;
-    }
-   
-    
+    }   
 
 }

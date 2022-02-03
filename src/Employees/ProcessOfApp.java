@@ -112,10 +112,11 @@ public class ProcessOfApp {
         if (!nameBill.equals("f")) {
             for (int i = 0; i < bills.length; i++) {
                 if (bills[i] == null) {
-                    int amount = Integer.parseInt(console.readLine("Enter a amount of the bill\n"));
+                    double amount = Double.parseDouble(console.readLine("Enter a amount of the bill\n"));
                     bills[i] = new Bill(nameBill, amount);
                     break;
                 }
+
             }
 
         } else {
@@ -125,11 +126,25 @@ public class ProcessOfApp {
                 if (employee != null && employee.getID() == employeeId) {
                     for (int i = 0; i < bills.length; i++) {
                         if (bills[i] == null) {
-                            int amount = Integer.parseInt(console.readLine("Enter a amount of the bill\n"));
-                            bills[i] = new Bill(employee.getFirstName() + ' ' + employee.getLastName(), amount);
-                            break;
+                            if (employees[i] instanceof PartTimeEmployee) {
+                                double amount = employees[i].calculateSalary();
+                                bills[i] = new Bill(nameBill, amount);
+                                break;
+                            } else {
+                                double amount = employees[i].calculateSalary();
+                                bills[i] = new Bill(nameBill, amount);
+                                break;
+                            }
                         }
                     }
+
+                    // for (int i = 0; i < bills.length; i++) {
+                    //     if (bills[i] == null) {
+                    //         int amount = Integer.parseInt(console.readLine("Enter a amount of the bill\n"));
+                    //         bills[i] = new Bill(employee.getFirstName() + ' ' + employee.getLastName(), amount);
+                    //         break;
+                    //     }
+                    // }
 
                 }
             }
@@ -147,8 +162,10 @@ public class ProcessOfApp {
             if (bill != null) {
                 System.out.println(bill.toString());
                 System.out.println("\n".repeat(2));
+                break;
             } else {
                 System.out.println("Sorry there is nothing to display");
+                break;
             }
         }
     }
