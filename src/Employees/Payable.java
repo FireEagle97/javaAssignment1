@@ -1,25 +1,24 @@
 package Employees;
 
-public interface Payable {
-    // private static int checkNumber = 0;
+public abstract class Payable {
+    private static int checkNumber = 10;
 
-    // public void incerement() {
-    //     checkNumber += 1;
-    // }
 
-    // public Payable(int checkNumber) {
-    //     Payable.checkNumber = checkNumber;
-    // }
 
-    // public int getCheckNumber() {
-    //     return checkNumber;
-    // }
+    public static int incerement() {
+        Payable.checkNumber += 1;
+        return Payable.checkNumber;
+    }
 
-    // public abstract void issueCheck();
-    public void issueCheck();
+    public Payable() {
+        Payable.checkNumber = incerement();
+        
+    }
 
-    public int getCheckNumber();
 
-    public void incerementCheckNumber(int previousCheck);
+    public int getCheckNumber() {
+        return checkNumber;
+    }
 
+    public abstract void issueCheck();
 }

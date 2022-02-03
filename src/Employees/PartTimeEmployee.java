@@ -50,15 +50,9 @@ public class PartTimeEmployee extends Employee {
 
     @Override
     public int getCheckNumber() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
-    @Override
-    public void incerementCheckNumber(int previousCheck) {
-        // TODO Auto-generated method stub
-        previousCheck += 1;
-    }
 
     @Override
     public String toString() {
@@ -66,5 +60,7 @@ public class PartTimeEmployee extends Employee {
     
         return empInfo;
     }
+
+
 
 }

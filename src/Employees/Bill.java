@@ -1,7 +1,8 @@
 package Employees;
 
-public class Bill implements Payable {
+public class Bill extends Payable {
 
+    public int checkNumber;
     private String companyName;
     private double amount;
 
@@ -12,9 +13,11 @@ public class Bill implements Payable {
      * @param amount
      * @param checknumber
      */
-    public Bill(String companyName, double amount, int checknumber) {
+    public Bill(String companyName, double amount) {
         this.companyName = companyName;
         this.amount = amount;
+        this.checkNumber = super.getCheckNumber();
+        super.incerement();
     }
 
     /**
@@ -32,20 +35,9 @@ public class Bill implements Payable {
     public String toString() {
         return "The name of the company name :" + this.companyName + '\n' +
                 "The amount of the check: " + this.amount + '\n' +
-                " ";
+                "The check number of this check is: "+ this.checkNumber ;
     }
 
-    @Override
-    public int getCheckNumber() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
 
-    @Override
-    public void incerementCheckNumber(int previousCheck) {
-        // TODO Auto-generated method stub
-        previousCheck += 1;
-        
-    }
 
 }

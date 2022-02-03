@@ -47,20 +47,18 @@ public class FullTimeEmployee extends Employee {
 
     @Override
     public int getCheckNumber() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
-    @Override
-    public void incerementCheckNumber(int previousCheck) {
-        previousCheck += 1;
-    }
 
     @Override
     public String toString() {
-        String empInfo = super.toString() + "\n" + "Type of employee is :"+this.typeOfEmployee;
+        String empInfo = super.toString() +
+                "\n" +
+        "Type of employee is :"+this.typeOfEmployee;
     
         return empInfo;
     }
+
 
 }
