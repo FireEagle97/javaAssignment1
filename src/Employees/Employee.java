@@ -3,6 +3,7 @@ package Employees;
 public abstract class Employee extends Payable {
     private String firstName;
     private String lastName;
+    private String typeOfEmployee;
     private int age;
     private int ID;
 
@@ -16,21 +17,45 @@ public abstract class Employee extends Payable {
      * @param age
      * @param checkNumber
      */
-    public Employee(int id, String fname, String lname, int age, int checkNumber) {
-        super(checkNumber);
+    public Employee(int id, String fname, String lname, int age) {
         this.ID = id;
         this.age = age;
         this.firstName = fname;
         this.lastName = lname;
     }
 
+
+    public abstract double calculateSalary();
+
+
     public String toString() {
         String employeeInfo = "Your employee info:\n" +
-        "Employee's id is: "+this.ID+"\n"+
-        "Employee's first name is "+this.firstName+"\n"+
-        "Employee's last name is "+this.lastName+"\n"+
-        "Employee's age is: " + this.age;
+                "Employee's id is: " + this.ID + "\n" +
+                "Employee's first name is " + this.firstName + "\n" +
+                "Employee's last name is " + this.lastName + "\n" +
+                "Employee's age is: " + this.age;
         return employeeInfo;
     }
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getTypeOfEmployee() {
+        return typeOfEmployee;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getID() {
+        return ID;
+    }   
 
 }

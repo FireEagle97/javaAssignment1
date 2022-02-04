@@ -2,6 +2,7 @@ package Employees;
 
 public class Bill extends Payable {
 
+    public int checkNumber;
     private String companyName;
     private double amount;
 
@@ -12,10 +13,11 @@ public class Bill extends Payable {
      * @param amount
      * @param checknumber
      */
-    public Bill(String companyName, double amount, int checknumber) {
-        super(checknumber);
+    public Bill(String companyName, double amount) {
         this.companyName = companyName;
         this.amount = amount;
+        this.checkNumber = super.getCheckNumber();
+        // super.incerement();
     }
 
     /**
@@ -33,7 +35,9 @@ public class Bill extends Payable {
     public String toString() {
         return "The name of the company name :" + this.companyName + '\n' +
                 "The amount of the check: " + this.amount + '\n' +
-                " ";
+                "The check number of this check is: "+ this.checkNumber ;
     }
+
+
 
 }
