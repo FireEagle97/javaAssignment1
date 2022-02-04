@@ -128,19 +128,21 @@ public class ProcessOfApp {
             for (Payable expense : expenses) {
                 //Checks given id exist or not
                 if (expense != null && expense.getID() == employeeId) {
-                    for (int i = 0; i < expense.length; i++) {
+                    for (int i = 0; i < expenses.length; i++) {
                         //checks first available spot in Bill array
-                        if (bills[i] == null) {
+                        if (expenses[i] == null) {
                             //Checks the employee type to calculate his/her salary and then creates a new Bill object
-                            if (employees[i] instanceof PartTimeEmployee) {
-                                double amount = employees[i].calculateSalary();
-                                bills[i] = new Bill(nameBill, amount);
+                            // expense = Employee | Bill | null
+                            if (expenses[i] instanceof PartTimeEmployee) {
+                                double amount = (expenses[i]).calculateSalary();
+                                expenses[i] = new Employee(nameBill, amount);
                                 break;
-                            } else {
+                            } else if(expenses[i] instanceof FullTimeEmployee)
                                 double amount = employees[i].calculateSalary();
                                 bills[i] = new Bill(nameBill, amount);
                                 break;
                             }
+                            
                         }
                     }
                 }

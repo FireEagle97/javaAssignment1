@@ -53,9 +53,10 @@ public abstract class Employee extends Payable {
     public int getAge() {
         return age;
     }
-
+@Override
     public int getID() {
         return ID;
     }   
 
-}
+/*payable interface and we need a company class concrete class that has the business logic
+

@@ -16,6 +16,6 @@ public abstract class Payable {
     public int getCheckNumber() {
         return checkNumber;
     }
-
+    public abstract int getID();
     public abstract void issueCheck();
 }
