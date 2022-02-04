@@ -3,7 +3,6 @@ package Employees;
 import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 public class ProcessOfApp {
       
@@ -14,31 +13,31 @@ public class ProcessOfApp {
      * @param bills
      * @param console
      */
-    public void UImenu(Employee[] employees, Bill[] bills, Console console) {
-createEmptyLine();
+    public void UImenu(Payable[] expenses, Console console) {
+        createEmptyLine();
         System.out.println("Please select one of the following option!");
         String option = null;
 
         // Gets from the user a correct information
         do {
             option = console.readLine(
-                    "1. Add a new employee\n2. Add a new bill.\n3. Issue check\n4. Employees info\n5. Bills' history\n6. exit\n");
+                    "1. Add a new employee\n2. Create Bill\n3. Issue check\n4. Employees info\n5. Bills' history\n6. exit\n");
             createEmptyLine();
             switch (option) {
                 case "1":
-                    employees = createEmployee(employees, console);
+                    expenses = createEmployee(expenses, console);
                     break;
                 case "2":
-                    bills = createBill(employees, bills, console);
+                    expenses = createBill(expenses, console);
                     break;
                 case "3":
-                    checkIssue(console);
+                    expenses = issueCheck(expenses, console);
                     break;
                 case "4":
-                    displayAllEmployees(employees);
+                    displayAllEmployees(expenses);
                     break;
                 case "5":
-                    displayAllBills(bills);
+                    displayAllBills(expenses);
                     break;
             }
         } while (!option.equals("6"));
@@ -50,7 +49,7 @@ createEmptyLine();
      * @param console to get information from the user
      * @return created employees
      */
-    public Employee[] createEmployee(Employee[] employees, Console console) {
+    public Payable[] createEmployee(Payable[] expenses, Console console) {
         String employeeType = null;
 
         // verify to customer add correct letter
@@ -68,29 +67,29 @@ createEmptyLine();
         // Creating new employee based on his type
         if (employeeType.equals("p")) {
             // Looking for empty slot in the to add the new employee
-            for (int i = 0; i < employees.length; i++) {
-                if (employees[i] == null) {
-                    employees[i] = new PartTimeEmployee(id, fname, lname, age);
-                    System.out.println(employees[i].toString());
+            for (int i = 0; i < expenses.length; i++) {
+                if (expenses[i] == null) {
+                    expenses[i] = new PartTimeEmployee(id, fname, lname, age);
+                    System.out.println(expenses[i].toString());
                     break;
                 }
             }
             createEmptyLine();
         } else {
             // Looking for empty slot in the to add the new employee
-            for (int i = 0; i < employees.length; i++) {
-                if (employees[i] == null) {
-                    employees[i] = new FullTimeEmployee(id, fname, lname, age);
-                    System.out.println(employees[i].toString());
+            for (int i = 0; i < expenses.length; i++) {
+                if (expenses[i] == null) {
+                    expenses[i] = new FullTimeEmployee(id, fname, lname, age);
+                    System.out.println(expenses[i].toString());
                     break;
                 }
             }
             createEmptyLine();
         }
-        return employees;
+        return expenses;
     }
 
-    /**
+    /*
      * Checks the any issue about the check
      * @param console to get information from the user
      */
@@ -104,30 +103,32 @@ createEmptyLine();
      * @param bills
      * @param console to get information from the user
      */
-    public Bill[] createBill(Employee[] employees, Bill[] bills, Console console) {
+    public Payable[] createBill(Payable[] expenses, Console console) {
         //Gets proper information for the user that what's the bill about
         String nameBill = console
-                .readLine("Enter a company name to be billed!\nif you want an employee payment please enter e/E\n")
+                .readLine("Enter a company name to be billed!\n or if you want an employee payment please enter e/E\n")
                 .toLowerCase();
         //To a company payment 
         if (!nameBill.equals("e")) {
-            for (int i = 0; i < bills.length; i++) {
-                if (bills[i] == null) {
+            for (int i = 0; i < expenses.length; i++) {
+                if (expenses[i] == null) {
                     double amount = Double.parseDouble(console.readLine("Enter a amount of the bill\n"));
-                    bills[i] = new Bill(nameBill, amount);
+                    expenses[i] = new Bill(nameBill, amount);
                     break;
                 }
             }
         }
+        return expenses;
+    }
+    public Payable[] issueCheck(Payable[] expenses, Console console){
         //To regular employee payment
-        else {
             //gets employee ID to search for it
             int employeeId = Integer
                     .parseInt(console.readLine("Enter Id of employee ID to pay his/her monthly pay-check\n"));
-            for (Employee employee : employees) {
+            for (Payable expense : expenses) {
                 //Checks given id exist or not
-                if (employee != null && employee.getID() == employeeId) {
-                    for (int i = 0; i < bills.length; i++) {
+                if (expense != null && expense.getID() == employeeId) {
+                    for (int i = 0; i < expense.length; i++) {
                         //checks first available spot in Bill array
                         if (bills[i] == null) {
                             //Checks the employee type to calculate his/her salary and then creates a new Bill object
@@ -147,15 +148,14 @@ createEmptyLine();
                     System.out.println("Does not an employee to provided id");
                 }
             }
-        }
-        return bills;
+        return expenses;
     }
 
     /**
      * Displays all created bills history
      * @param employees
      */
-    public void displayAllBills(Bill[] bills) {
+    public void displayAllBills(Payable[] expenses) {
         int billCounter = 0;
         for (Bill bill : bills) {
             //Check the bill does exist or not
@@ -173,7 +173,7 @@ createEmptyLine();
      * Display all employees information
      * @param employees 
      */
-    public void displayAllEmployees(Employee[] employees) {
+    public void displayAllEmployees(Payable[] expenses) {
         int employeeCounter = 0;
         //loop over employees
         for (Employee employee : employees) {
@@ -202,7 +202,7 @@ createEmptyLine();
         if (exitcode == 0) {
             return "God bye see you next time " + empName + ", and today is " + today;
         } else {
-            return "Hello! " + empName + ", and today is " + date;
+            return "Hello! " + empName + ", and today is " + today;
         }
     }
 
