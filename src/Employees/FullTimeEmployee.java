@@ -30,10 +30,7 @@ public class FullTimeEmployee extends Employee {
      * Calculates full time employee's fixed salary
      * @return monthly salary of the current employee
      */
-    @Override
-    public double calculateSalary() {
-        return (salary) / 12;
-    }
+   
 
     /**
      * 
@@ -62,6 +59,12 @@ public class FullTimeEmployee extends Employee {
         "Type of employee is :"+this.typeOfEmployee;
     
         return empInfo;
+    }
+
+    @Override
+    public double calculateSalary() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 
