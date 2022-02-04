@@ -17,7 +17,7 @@ public class Bill extends Payable {
         this.companyName = companyName;
         this.amount = amount;
         this.checkNumber = super.getCheckNumber();
-        super.incerement();
+        // super.incerement();
     }
 
     /**
