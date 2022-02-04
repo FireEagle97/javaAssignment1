@@ -3,6 +3,7 @@ package Employees;
 import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class ProcessOfApp {
       
@@ -14,7 +15,7 @@ public class ProcessOfApp {
      * @param console
      */
     public void UImenu(Employee[] employees, Bill[] bills, Console console) {
-
+createEmptyLine();
         System.out.println("Please select one of the following option!");
         String option = null;
 
@@ -22,7 +23,7 @@ public class ProcessOfApp {
         do {
             option = console.readLine(
                     "1. Add a new employee\n2. Add a new bill.\n3. Issue check\n4. Employees info\n5. Bills' history\n6. exit\n");
-            System.out.println(createEmptyLine());
+            createEmptyLine();
             switch (option) {
                 case "1":
                     employees = createEmployee(employees, console);
@@ -62,7 +63,7 @@ public class ProcessOfApp {
         String lname = console.readLine("What is last name of employee?\n");
         int age = Integer.parseInt(console.readLine("What is age of " + fname + " " + lname + ".\n"));
         int id = Integer.parseInt(console.readLine("What is the id of " + fname + " " + lname + ".\n"));
-        System.out.println(createEmptyLine());
+        createEmptyLine();
 
         // Creating new employee based on his type
         if (employeeType.equals("p")) {
@@ -74,7 +75,7 @@ public class ProcessOfApp {
                     break;
                 }
             }
-            System.out.println(createEmptyLine());
+            createEmptyLine();
         } else {
             // Looking for empty slot in the to add the new employee
             for (int i = 0; i < employees.length; i++) {
@@ -84,8 +85,7 @@ public class ProcessOfApp {
                     break;
                 }
             }
-
-            System.out.println(createEmptyLine());
+            createEmptyLine();
         }
         return employees;
     }
@@ -105,27 +105,32 @@ public class ProcessOfApp {
      * @param console to get information from the user
      */
     public Bill[] createBill(Employee[] employees, Bill[] bills, Console console) {
-
+        //Gets proper information for the user that what's the bill about
         String nameBill = console
-                .readLine("Enter a company name to be billed! if the employee payment please enter F/f\n")
+                .readLine("Enter a company name to be billed!\nif you want an employee payment please enter e/E\n")
                 .toLowerCase();
-        if (!nameBill.equals("f")) {
+        //To a company payment 
+        if (!nameBill.equals("e")) {
             for (int i = 0; i < bills.length; i++) {
                 if (bills[i] == null) {
                     double amount = Double.parseDouble(console.readLine("Enter a amount of the bill\n"));
                     bills[i] = new Bill(nameBill, amount);
                     break;
                 }
-
             }
-
-        } else {
+        }
+        //To regular employee payment
+        else {
+            //gets employee ID to search for it
             int employeeId = Integer
                     .parseInt(console.readLine("Enter Id of employee ID to pay his/her monthly pay-check\n"));
             for (Employee employee : employees) {
+                //Checks given id exist or not
                 if (employee != null && employee.getID() == employeeId) {
                     for (int i = 0; i < bills.length; i++) {
+                        //checks first available spot in Bill array
                         if (bills[i] == null) {
+                            //Checks the employee type to calculate his/her salary and then creates a new Bill object
                             if (employees[i] instanceof PartTimeEmployee) {
                                 double amount = employees[i].calculateSalary();
                                 bills[i] = new Bill(nameBill, amount);
@@ -137,18 +142,11 @@ public class ProcessOfApp {
                             }
                         }
                     }
-
-                    // for (int i = 0; i < bills.length; i++) {
-                    //     if (bills[i] == null) {
-                    //         int amount = Integer.parseInt(console.readLine("Enter a amount of the bill\n"));
-                    //         bills[i] = new Bill(employee.getFirstName() + ' ' + employee.getLastName(), amount);
-                    //         break;
-                    //     }
-                    // }
-
+                }
+                else {
+                    System.out.println("Does not an employee to provided id");
                 }
             }
-
         }
         return bills;
     }
@@ -158,16 +156,17 @@ public class ProcessOfApp {
      * @param employees
      */
     public void displayAllBills(Bill[] bills) {
+        int billCounter = 0;
         for (Bill bill : bills) {
+            //Check the bill does exist or not
             if (bill != null) {
                 System.out.println(bill.toString());
+                billCounter++;
                 System.out.println("\n".repeat(2));
-                break;
-            } else {
-                System.out.println("Sorry there is nothing to display");
-                break;
             }
         }
+        //Display total bills number
+        System.out.println("You have processed total "+billCounter+" bills");
     }
 
     /**
@@ -175,17 +174,19 @@ public class ProcessOfApp {
      * @param employees 
      */
     public void displayAllEmployees(Employee[] employees) {
-        // int employeeCounter = 0;
+        int employeeCounter = 0;
+        //loop over employees
         for (Employee employee : employees) {
+            //check an employee does exist
             if (employee != null) {
-                // employeeCounter +=1;
+                employeeCounter += 1;
                 System.out.println(employee.toString());
                 System.out.println("\n".repeat(2));
             }
         }
-        // System.out.println("You have "+employeeCounter+" employees work in your
-        // company");
-        System.out.println(createEmptyLine());
+        //Displays total employees number
+        System.out.println("You have "+employeeCounter+" employees work in your company");
+        createEmptyLine();
     }
 
     /**
@@ -209,13 +210,14 @@ public class ProcessOfApp {
      * Creates empty line for better visualization
      * @return provided a better visual environment
      */
-    public static String createEmptyLine() {
-        String emptyLines = "=================";
-        for (int i = 0; i < 3; i++) {
-            emptyLines += "\n";
+    public static void createEmptyLine() {
+        for (int j = 0; j < 50; j++) {
+            System.out.print("=");
         }
-        emptyLines += "=================";
-        return emptyLines;
+        System.out.println();
+        for (int i = 0; i < 4; i++) {
+            System.out.println();
+        }
     }
-    
+        
 }
