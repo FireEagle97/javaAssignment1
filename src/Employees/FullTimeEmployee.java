@@ -35,12 +35,6 @@ public class FullTimeEmployee extends Employee {
         return (salary) / 12;
     }
 
-    /**
-     * 
-     */
-    public void issueCheck() {
-        System.out.println("Full time employee issue check");
-    }
 
     /**
      * @return type of employee
@@ -49,10 +43,6 @@ public class FullTimeEmployee extends Employee {
         return typeOfEmployee;
     }
 
-    @Override
-    public int getCheckNumber() {
-        return 0;
-    }
 
 
     @Override
@@ -62,6 +52,11 @@ public class FullTimeEmployee extends Employee {
         "Type of employee is :"+this.typeOfEmployee;
     
         return empInfo;
+    }
+
+    //pay by his/her salary (month)
+    public double pay() {
+        return this.salary / 12;
     }
 
 

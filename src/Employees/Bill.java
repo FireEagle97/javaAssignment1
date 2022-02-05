@@ -1,8 +1,8 @@
 package Employees;
 
-public class Bill extends Payable {
+public class Bill implements Payable {
 
-    public int checkNumber;
+    private int id;
     private String companyName;
     private double amount;
 
@@ -11,33 +11,19 @@ public class Bill extends Payable {
      * 
      * @param companyName
      * @param amount
-     * @param checknumber
      */
-    public Bill(String companyName, double amount) {
+    public Bill(int id, String companyName, double amount) {
+        this.id = id;
         this.companyName = companyName;
         this.amount = amount;
-        this.checkNumber = super.getCheckNumber();
-        // super.incerement();
     }
 
-    /**
-     * 
-     */
-    @Override
-    public void issueCheck() {
-        System.out.println("Part time employee issue check");
+    public double pay() {
+        return this.amount;
     }
 
-    /**
-     * 
-     */
-    @Override
-    public String toString() {
-        return "The name of the company name :" + this.companyName + '\n' +
-                "The amount of the check: " + this.amount + '\n' +
-                "The check number of this check is: "+ this.checkNumber ;
+    public String getCompanyName() {
+        return this.companyName;
     }
-
-
 
 }

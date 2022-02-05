@@ -1,21 +1,7 @@
 package Employees;
 
-public abstract class Payable {
-    private static int checkNumber = 10;
+public interface Payable {
 
-    public Payable() {
-        Payable.checkNumber = incerement();
-        
-    }
+    double pay();
 
-    public static int incerement() {
-        Payable.checkNumber += 1;
-        return Payable.checkNumber;
-    }
-
-    public int getCheckNumber() {
-        return checkNumber;
-    }
-
-    public abstract void issueCheck();
 }

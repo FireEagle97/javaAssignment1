@@ -29,12 +29,6 @@ public class PartTimeEmployee extends Employee {
         this.typeOfEmployee = "Part Time";
     }
 
- 
-
-    
-    public void issueCheck() {
-        System.out.println("Part time employee issue check");
-    }
 
     @Override
     public String getTypeOfEmployee() {
@@ -42,10 +36,6 @@ public class PartTimeEmployee extends Employee {
     }
 
 
-    @Override
-    public int getCheckNumber() {
-        return 0;
-    }
 
 
     @Override
@@ -65,6 +55,10 @@ public class PartTimeEmployee extends Employee {
         return hours * rateSalary[echelon - 1];
     }
 
+    //pay by his/her salary
+    public double pay() {
+        return calculateSalary() / 12;
+    }
 
 
 }

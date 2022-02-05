@@ -1,6 +1,6 @@
 package Employees;
 
-public abstract class Employee extends Payable {
+public abstract class Employee implements Payable {
     private String firstName;
     private String lastName;
     private String typeOfEmployee;
