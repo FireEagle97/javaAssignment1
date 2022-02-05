@@ -15,8 +15,8 @@ public class Check {
 
     public String toString() {
         int dollars = (int)this.amount;
-        int cents = (int)this.amount*100%100;
-        return "check number: " + this.checkId + " amount: $" + this.amount + "\n"
+        int cents = (int)(this.amount*100)%100;
+        return "check number: " + this.checkId + " amount: $" + (double)Math.round(amount * 100) / 100 + "\n"
             +"PAY TO THE ORDER OF: " + this.payee.toUpperCase()
             +"\n Pay exactly: " 
             +dollars + " dollars and "

@@ -46,6 +46,10 @@ public abstract class Employee implements Payable {
         return lastName;
     }
 
+    public String getPayeeName() {
+        return this.firstName + " " + this.lastName;
+    }
+
     public String getTypeOfEmployee() {
         return typeOfEmployee;
     }

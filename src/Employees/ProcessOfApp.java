@@ -18,6 +18,7 @@ public class ProcessOfApp {
         System.out.println("Please select one of the following option!");
         String option = null;
 
+
         // Gets from the user a correct information
         do {
             option = console.readLine(
@@ -32,7 +33,7 @@ public class ProcessOfApp {
                     createBill(company, console);
                     break;
                 case "3":
-                    // issueCheck(company, console);
+                    company.issueChecks();
                     break;
                 case "4":
                     // displayAllEmployees(company);

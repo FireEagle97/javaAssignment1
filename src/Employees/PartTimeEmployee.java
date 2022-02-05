@@ -13,9 +13,6 @@ import java.io.Console;
 public class PartTimeEmployee extends Employee {
     private String typeOfEmployee;
 
-    int[] rateSalary = { 15, 20, 25, 30, 40 };
-    int[] echelon = { 1, 2, 3, 4, 5 };
-
     /**
      * 
      * @param id
@@ -28,7 +25,6 @@ public class PartTimeEmployee extends Employee {
         super(id, fname, lname, age);
         this.typeOfEmployee = "Part Time";
     }
-
 
     @Override
     public String getTypeOfEmployee() {
@@ -49,8 +45,9 @@ public class PartTimeEmployee extends Employee {
 
     @Override
     public double calculateSalary() { // hours should be double 
+        int[] rateSalary = new int[]{ 15, 20, 25, 30, 40 };
         Console console = System.console();
-        int echelon = Integer.parseInt(console.readLine("Enter his/her echelon\n"));
+        int echelon = Integer.parseInt(console.readLine("You are paying + " + this.getPayeeName() + " working part time. Enter his/her echelon\n"));
         double hours = Double.parseDouble(console.readLine("Enter his/her hourly works\n"));
         return hours * rateSalary[echelon - 1];
     }
