@@ -2,7 +2,7 @@ package Employees;
 
 public class Bill implements Payable {
 
-    private int id;
+    // private int id;
     private String companyName;
     private double amount;
 
@@ -12,8 +12,8 @@ public class Bill implements Payable {
      * @param companyName
      * @param amount
      */
-    public Bill(int id, String companyName, double amount) {
-        this.id = id;
+    public Bill(String companyName, double amount) {
+        // this.id = id;
         this.companyName = companyName;
         this.amount = amount;
     }
@@ -22,7 +22,7 @@ public class Bill implements Payable {
         return this.amount;
     }
 
-    public String getCompanyName() {
+    public String getPayeeName() {
         return this.companyName;
     }
 
