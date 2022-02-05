@@ -75,33 +75,10 @@ public class ProcessOfApp {
                 else {
                     expenses[i] = new FullTimeEmployee(id, fname, lname, age);
                 }
-                expenses[i] = new PartTimeEmployee(id, fname, lname, age);
                 System.out.println(expenses[i].toString());
                 break;
             }
         }
-        //code duplication, improvement above
-        // if (employeeType.equals("p")) {
-        //     // Looking for empty slot in the to add the new employee
-        //     for (int i = 0; i < expenses.length; i++) {
-        //         if (expenses[i] == null) {
-        //             expenses[i] = new PartTimeEmployee(id, fname, lname, age);
-        //             System.out.println(expenses[i].toString());
-        //             break;
-        //         }
-        //     }
-        //     createEmptyLine();
-        // } else {
-        //     // Looking for empty slot in the to add the new employee
-        //     for (int i = 0; i < expenses.length; i++) {
-        //         if (expenses[i] == null) {
-        //             expenses[i] = new FullTimeEmployee(id, fname, lname, age);
-        //             System.out.println(expenses[i].toString());
-        //             break;
-        //         }
-        //     }
-        //     createEmptyLine();
-        // }
         return expenses;
     }
 
