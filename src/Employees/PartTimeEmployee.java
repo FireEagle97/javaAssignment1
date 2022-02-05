@@ -26,13 +26,6 @@ public class PartTimeEmployee extends Employee {
         this.typeOfEmployee = "Part Time";
     }
 
-    @Override
-    public String getTypeOfEmployee() {
-        return typeOfEmployee;
-    }
-
-
-
 
     @Override
     public String toString() {

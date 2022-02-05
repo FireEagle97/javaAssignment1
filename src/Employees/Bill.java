@@ -26,4 +26,13 @@ public class Bill implements Payable {
         return this.companyName;
     }
 
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return "The name of the company name :" + this.companyName + '\n' +
+                "The amount to pay: $" + this.amount;
+    }
+
 }

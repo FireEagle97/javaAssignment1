@@ -36,10 +36,10 @@ public class ProcessOfApp {
                     company.issueChecks();
                     break;
                 case "4":
-                    // displayAllEmployees(company);
+                    displayAllEmployees(company);
                     break;
                 case "5":
-                    // displayAllBills(company);
+                    displayAllBills(company);
                     break;
             }
         } while (!option.equals("6"));
@@ -141,22 +141,52 @@ public class ProcessOfApp {
     // }
 
     /**
+     * Displays all employees
+     * @param employees
+     */
+    public void displayAllEmployees(Company company) {
+        Payable[] expenses = company.getExpenses();
+        int employeeCounter = 0;
+        int fullTimeCounter = 0;
+        int partTimeCounter = 0;
+        for (Payable expense : expenses) {
+            //Check the bill does exist if the expense is an employee
+            if (expense != null) {
+                if (expense instanceof FullTimeEmployee) {
+                    System.out.println(expense);
+                    fullTimeCounter++;
+                } else if (expense instanceof PartTimeEmployee) {
+                    System.out.println(expense);
+                    partTimeCounter++;
+                }
+                employeeCounter++;
+                System.out.println("\n".repeat(2));
+            }
+
+        }
+        //Display total employees
+        System.out.println("Total employees: " + employeeCounter + " | # full time: " + fullTimeCounter + " | # part time: " + partTimeCounter);
+    }
+
+    /**
      * Displays all created bills history
      * @param employees
      */
-    // public void displayAllBills(Payable[] expenses) {
-    //     int billCounter = 0;
-    //     for (Bill bill : bills) {
-    //         //Check the bill does exist or not
-    //         if (bill != null) {
-    //             System.out.println(bill.toString());
-    //             billCounter++;
-    //             System.out.println("\n".repeat(2));
-    //         }
-    //     }
-    //     //Display total bills number
-    //     System.out.println("You have processed total "+billCounter+" bills");
-    // }
+    public void displayAllBills(Company company) {
+        Payable[] expenses = company.getExpenses();
+        int billCounter = 0;
+        for (Payable expense : expenses) {
+            //Check the bill does exist and if the expense is a bill
+            if (expense != null && expense instanceof Bill) {
+                System.out.println(expense);
+                System.out.println("\n".repeat(2));
+            }
+        }
+        //Display total bills number
+        System.out.println("You have processed total "+billCounter+" bills");
+    }
+
+    
 
     /**
      * Display all employees information
@@ -200,9 +230,7 @@ public class ProcessOfApp {
      * @return provided a better visual environment
      */
     public static void createEmptyLine() {
-        for (int j = 0; j < 50; j++) {
-            System.out.print("=");
-        }
+        System.out.print("==================================================");
         System.out.println();
         for (int i = 0; i < 4; i++) {
             System.out.println();

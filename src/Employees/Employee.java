@@ -38,21 +38,18 @@ public abstract class Employee implements Payable {
     }
 
 
-    public String getFirstName() {
-        return firstName;
-    }
+    // public String getFirstName() {
+    //     return firstName;
+    // }
 
-    public String getLastName() {
-        return lastName;
-    }
+    // public String getLastName() {
+    //     return lastName;
+    // }
 
     public String getPayeeName() {
         return this.firstName + " " + this.lastName;
     }
 
-    public String getTypeOfEmployee() {
-        return typeOfEmployee;
-    }
 
     public int getAge() {
         return age;

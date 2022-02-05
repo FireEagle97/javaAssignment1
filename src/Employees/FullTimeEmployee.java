@@ -9,8 +9,8 @@ package Employees;
  */
 public class FullTimeEmployee extends Employee {
 
-    final double salary = 84000.0;
-    private String typeOfEmployee;
+    final double salary = 84000.0; //yearly salary
+    private String typeOfEmployee; //either full or part time
 
 
     /**
@@ -36,12 +36,6 @@ public class FullTimeEmployee extends Employee {
     }
 
 
-    /**
-     * @return type of employee
-     */
-    public String getTypeOfEmployee() {
-        return typeOfEmployee;
-    }
 
 
 
